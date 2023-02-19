@@ -18,11 +18,11 @@ pipeline {
         sh "mvn clean package"
       }
     ]
-    stage('3.Deploy2UAT'){
+    stage('3.Deploy2Prod'){
       steps{
         sh "echo DEPLOYING TO Production"
         sshagent(['agentcredentials']) {
-        sh "scp -o StrictHostKeyChecking=no target/*.war ec2-user@18.234.217.66:/opt/tomcat9/webapps/uatapp.war"
+        sh "scp -o StrictHostKeyChecking=no target/*.war ec2-user@18.234.217.66:/opt/tomcat9/webapps/app1.war"
       }
     }
   }
